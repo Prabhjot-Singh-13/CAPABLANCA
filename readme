@@ -1,1 +1,3 @@
-# Chess bot
+# CAPABLANCA
+AI Chess Bot with Ensemble Models
+This repository contains the development of an AI chess bot that uses ensemble models like Random Forest and XGBoost to predict chess moves based on a dataset of chess games. The system aims to simulate a player's decision-making process by learning from game data and can be used for training, analysis, and AI-driven chess simulation.
