@@ -1,0 +1,44 @@
+name: CI/CD Pipeline
+
+# When this workflow should be triggered
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+# Define jobs
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js (for a Node.js project)
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run Tests
+      run: npm test
+
+    - name: Build the application
+      run: npm run build
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v2
+
+    - name: Deploy to server
+      run: ./deploy.sh
